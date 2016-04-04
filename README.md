@@ -10,7 +10,7 @@
     <li>http-server -c-1</li>
   </ul>
 
-Otherwise you can just open the file because I am using Allow-Cross-Origin extension in Chrome.
+Otherwise you can just open the file. If that fails, just do the above for any graph; it could be because I am using Allow-Cross-Origin extension in Chrome.
 </h3>
 
 <h5>A lot of these are taken from the creator of d3's blocks website -- check it out!  http://bl.ocks.org/mbostock </h5>

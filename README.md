@@ -5,7 +5,7 @@
 <h3> Whenever you need to read a CSV file and such do the following (This also requires Node to be installed globally on your computer):
 
   <ul>
-    <li> npm install http-server </li>
+    <li> npm install -g http-server </li>
     <li> From terminal, cd into the folder </li>
     <li> http-server -c-1</li>
   </ul>

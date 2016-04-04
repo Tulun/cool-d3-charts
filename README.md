@@ -10,3 +10,5 @@
     <li> http-server -c-1</li>
   </ul>
 </h3>
+
+<h5> A lot of these are taken from the creator of d3's blocks website -- check it out!  http://bl.ocks.org/mbostock </h5>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  background: #000;
+}
+
+</style>
+<canvas width="960" height="960"></canvas>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+var canvas = document.querySelector("canvas"),
+    context = canvas.getContext("2d"),
+    width = canvas.width,
+    height = canvas.height;
+
+var n = 400,
+    pi = Math.PI,
+    tau = 2 * pi;
+
+var nodes = d3.range(n).map(function() {
+  var r = Math.random() * width / 3,
+      a = Math.random() * tau,
+      x = width / 2 + r * Math.cos(a),
+      y = height / 2 + r * Math.sin(a);
+  return {
+    x: x,
+    y: y,
+    px: x + (height / 2 - y) * 0.006,
+    py: y + (x - width / 2) * 0.006
+  };
+});
+
+var force = d3.layout.force()
+    .charge(0.2)
+    .gravity(0)
+    .friction(1)
+    .nodes(nodes)
+    .size([width, height])
+    .start();
+
+var stroke = d3.scale.linear()
+    .domain([0, 10])
+    .range(["magenta", "yellow"]);
+
+force.on("tick", function(e) {
+  context.clearRect(0, 0, width, height);
+  context.lineWidth = 4;
+  context.lineCap = "round";
+
+  for (var i = 0, node, vx, vy; i < n; ++i) {
+    node = nodes[i], vx = node.x - node.px, vy = node.y - node.py;
+    context.beginPath();
+
+    context.moveTo(node.x, node.y);
+    context.lineTo(node.x + vx * 3, node.y + vy * 3);
+    context.strokeStyle = stroke(vx * vx + vy * vy);
+    context.stroke();
+  }
+
+  force.resume();
+});
+
+</script>
